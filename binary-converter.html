@@ -13,21 +13,24 @@ var output = document.getElementById("output");
 var input = document.getElementById("input");
 var explanation = document.getElementById("explanation");
 function getBinaryValue() {
-	let inputValue = parseInt(input.value);
+	let binaryValue = parseInt(input.value);
+	console.log(binaryValue);
+	if (isNaN(binaryValue)) {
+		output.innerHTML = "Please input a number";
+		return;
+	};
 	let binaryArr = [];
 	let explanationArr = [];
-	let binaryValue = inputValue;
 	while (binaryValue > 1) {
 		remainder = Math.round(binaryValue % 2)
 		binaryArr.unshift(remainder);
 		explanationArr.push(binaryValue + " / 2 = " + remainder)
 		binaryValue = Math.floor(binaryValue / 2);
-		
 	};
 	binaryArr.unshift(Math.round(binaryValue / 2))
 	explanationArr.push(binaryValue + " / 2 = " + Math.round(binaryValue / 2))
 	binaryString = binaryArr.join("");
-	console.log(binaryString);
+	// console.log(binaryString);
 	output.innerHTML = "Binary Value: " + binaryString;
 	explanation.innerHTML = explanationArr.join("\n")
 };
